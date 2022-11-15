@@ -1,0 +1,50 @@
+@media (min-width:1400px){
+    body{
+        background-color: red;
+        
+    }
+    body::after{
+        content: "xxl(extra extra large)";
+    }
+
+}
+@media (max-width:1400px) {
+    body{
+        background-color:pink;
+    }
+    body::after{
+        content: "xl(extra large)";
+    }
+}
+@media (max-width:1200px){
+    body{
+        background-color: aqua;
+    }
+    body::after{
+        content: "lg(large)"
+    }
+}
+@media (max-width:992px){
+    body{
+        background-color: beige;
+    };
+    body::after{
+        content: "md(medium)";
+    }
+}
+@media(max-width:768px){
+    body{
+        background-color: green;
+    }
+    body::after{
+        content: "sm(small)";
+    }
+}
+@media(max-width:576px){
+    body{
+        background-color:yellow;
+    }
+    body::after{
+        content: "xs(extra small)";
+    }
+}

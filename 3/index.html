@@ -8,12 +8,57 @@
     <link href="style.css" rel="stylesheet">
 </head>
 <body>
-    <form class="a">
-        <h1>General Information</h1>
-        
-    </form>
-    <form class="b">
-        <h1>Contact details</h1>
-    </form>
+    <container>
+        <form class="a">
+            <h2>General Information</h2>
+            <div>
+                <input type="text" value="First Name">
+                <input type="text" value="Last Name">
+            </div>
+            <input type="email" value="Email">
+            <input type="date" value="yyyy.mm.dd">
+            <input type="text" value="Company">
+            <select>
+                <option>Position</option>
+                <option>Manager</option>
+                <option>Senior Developer</option>
+                <option>Junior Developer</option>
+            </select>
+    
+        </form>
+        <form class="b">
+            <h2>Contact details</h2>
+            <input type="address" value="Street">
+            <input type="text" value="Additional Information">
+            <div>
+                <input type="number" placeholder="Zip Code">
+                <select>
+                    <option>Place</option>
+                    <option> Ulaanbaatar</option>
+                    <option>Darkhan</option>
+                    <option>Selenge</option>
+                </select>
+            </div>
+            <select>
+                <option>Country</option>
+                <option>Mongolia</option>
+                <option>Russia</option>
+                <option>China</option>
+                <option>USA</option>
+            </select>
+            <div>
+                <input type="password" placeholder="Code">
+                <input type="number" placeholder="Phone Number">
+            </div>
+            
+            <label>
+                <input type="checkbox" > I do accept the Terms and Conditions of your site</label>
+            <div>
+                <button>Register Badge</button>
+            </div>
+            
+        </form>
+    </container>
+    
 </body>
 </html>
