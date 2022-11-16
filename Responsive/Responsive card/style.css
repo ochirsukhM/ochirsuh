@@ -1,0 +1,28 @@
+section{
+    display: flex;
+    gap:5vw;
+}
+.b{
+    flex-direction: row-reverse;
+}
+img{
+    width: 30vw;
+    height: 30vh;
+}
+a{
+    color: green;
+}
+h5{
+    color: #a2a2a2;
+
+}
+@media (max-width:600px){
+    section{
+        display: block;
+    }
+    img{
+        width: 100vw;
+        height: 20vh;
+    
+    }
+}
