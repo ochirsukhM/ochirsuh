@@ -13,6 +13,9 @@
     justify-content: center;
     align-items: center;
 }
+.images img:hover{
+height: 10vh;
+}
 @media (min-width:1350px){
     .images{
         display: flex;
@@ -34,7 +37,7 @@
         width: 30%;
         height: 30vw;
     }
-}
+    .
 @media(max-width:992px){
     .images{
         display: flex;
