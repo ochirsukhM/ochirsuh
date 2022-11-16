@@ -118,7 +118,7 @@ footer a {
     display: block;
     width: 170px;
 }
-@media (max-width:576px){
+@media (max-width:600px){
     header ul li {
         margin: 0px;
     }
@@ -140,5 +140,15 @@ footer a {
     }
     .row>*{
         width: 100%;
+    }
+}
+@media (min-width:1220px)
+{
+    .row{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .row>*{
+        width: 50%;
     }
 }

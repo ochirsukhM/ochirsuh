@@ -1,0 +1,35 @@
+.a img{
+    width: 30%;
+}
+.b{
+    display: flex;
+    gap:1em;
+    width: 100%;
+}
+.b img{
+    width: 16.5%;
+}
+
+.c{
+    background-color: gray;
+    border-radius: 20px;
+}
+@media (min-width:1024px)
+{
+    .a img{
+        width: 16%;
+    }
+    section{
+        display: flex;
+        
+    }
+    .c{
+       width: 70vw;
+
+    }
+}
+@media (min-width:340px) and (max-width:768px){
+    .a img{
+        width: 100%;
+    }
+}
