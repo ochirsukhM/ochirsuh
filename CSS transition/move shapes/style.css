@@ -1,0 +1,63 @@
+.box{
+    position: relative;
+    width: 500px;
+    height: 400px;
+    margin: 0 auto 10px;
+    border: 2px #aaa solid;
+    padding: 10px;
+} 
+.box div{
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 160px;
+    left: 200px;
+    border-radius: 50px;
+    
+}
+.box div p{
+    line-height: 70px;
+      color:white;
+      font-weight: bold;
+     
+}
+.box1{
+    z-index: 10;
+    background-color: blue;
+    transition: all 1s ease-in-out;
+}
+.box2{
+    z-index: 9;
+    background-color: green;
+    transition-property: top, left;
+    transition-duration: 1s, 1s;
+    transition-delay:0s, 1s;
+}
+.box3{
+    z-index: 8;
+    background-color: red;
+    transition-property: top,left, ease-in-out;
+    transition-duration: 0.5s,1s,1s;
+    transition-delay:0s,1s,0s ;
+}
+.box p{
+    width: 500px;
+    position: absolute;
+    bottom: 20px;
+}
+.box:hover .box1{
+    top:0px;
+    left:0px;
+    transition: 1s ease-in-out;
+}
+.box:hover .box2{
+    left: 420px;
+    top: 320px;
+    
+}
+.box:hover .box3{
+    left:420px;
+    top:0px;
+    border-radius: 0px;
+    background-color: orange;
+}
