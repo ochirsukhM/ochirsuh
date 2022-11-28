@@ -1,0 +1,34 @@
+input[type=checkbox] {
+visibility: hidden;
+}
+label{
+    display: inline-block;
+    width: 400px;
+    height: 100px;
+    background-color: lightgray;
+    position: relative;
+    border-radius: 50px;
+    border: 1px solid black;
+}
+.checkbutton{
+    position: absolute;
+    left:0px;
+    top:0px;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    transition: all .5s ease;
+}
+.checkbutton::after{
+    background-color: blue;
+    transition: 0.4s;
+}
+input:checked + .checkbutton{
+    left:300px;
+}
+input:checked + .checkbutton:after{
+    background-color: blue;
+}
+
