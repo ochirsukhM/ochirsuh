@@ -1,10 +1,10 @@
-let a= 57;
+let a= 257;
 let b;
 let c;
-
+let d;
 c=a%10;
-b=(a-c)/10
-console.log("ehnii tsipr=", b);
-console.log("2dahi tsipr=", c);
-d=2**10; 
-console.log (d);
+b=(a-c)/10%10;
+d=(a-b*10-c)/100;
+console.log("ehnii tsipr=", d);
+console.log ("2dahi tsipr=", b);
+console.log("3dahi tsipr=", c); 
