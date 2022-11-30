@@ -1,0 +1,1 @@
+alert(Math.floor(Math.random()*(250-101))+ 101);
