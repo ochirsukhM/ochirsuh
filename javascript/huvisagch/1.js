@@ -1,7 +1,7 @@
 let a=85;
-let b=85;
-let c=88;
-let d=79;
+let b=95;
+let c=98;
+let d=95;
 let sum;
 if(a>80) {
     if(b>80){
@@ -14,7 +14,7 @@ if(a>80) {
         else if(d>80){
             sum=a+b+d;
             }
-            else sum=a+b        
+            else sum=a+b;        
     }
     else if(c>80){
         if(d>80) {
@@ -22,7 +22,8 @@ if(a>80) {
         }
         else sum=a+c;
     }
-        else sum=a;
+        else if(d>80) sum=a+d;
+            else sum=a;
 }
 else if(b>80){
         if(c>80){

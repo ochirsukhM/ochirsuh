@@ -1,7 +1,7 @@
-let a=6;
-let b=6;
+let a=2;
+let b=5;
 let c=5;
-let d=5;
+let d=4;
 let pro;
 if(a<5) {
     if(b<5){
@@ -9,7 +9,7 @@ if(a<5) {
             if(d<5){
                 pro=a*b*c*d;
             }
-            else sum=a*b*c;        
+            else pro=a*b*c;        
                 }
         else if(d<5){
             pro=a*b*d;
@@ -22,7 +22,8 @@ if(a<5) {
         }
         else pro=a*c;
     }
-        else pro=a;
+        else if(d<5) pro=a*d;
+            else pro=a;
 }
 else if(b<5){
         if(c<5){
