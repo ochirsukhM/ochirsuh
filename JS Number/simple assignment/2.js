@@ -1,1 +1,2 @@
-alert(Math.floor(Math.random()*(250-101))+ 101);
+n=(Math.floor(Math.random()*(255-101))+ 101);
+console.log(n)
