@@ -10,68 +10,56 @@ let a1;
 let a2;
 let a=input1(a1);
 let b=input2(a2);
-// function even(c,d,e){
-//     c=a
-//     d=b
-//     e=[]
-//     if(c>d){
-//         if(Math.floor(d)%2==0){
-//             for(let i=0;i<Math.floor((c-d)/2);i++){
-//             e[i]=Math.floor(d)+2+2*i
-//             }
-//         }
-//         else  for(let i=0;i<Math.floor((c-d)/2);i++){
-//             e[i]=Math.floor(d)+1+2*i
-//             }
-       
-//     }
-//     else if(c<d)  
-//     if(Math.floor(c)%2==0){
-//         for(let i=0;i<Math.floor((d-c)/2);i++){
-//         e[i]=Math.floor(c)+2+2*i
-//         }
-//     }
-//     else  for(let i=0;i<Math.floor((d-c)/2);i++){
-//         e[i]=Math.floor(c)+1+2*i
-//         }
-//     // console.log(c)
-//     // console.log(d)
-//     console.log(e);
-// }
-function odd(c,d,e){
-    c=a
-    d=b
+
+
+function even(c,d,e){
+
+    console.log(c,d)
+    // c=a
+    // d=b
     e=[]
     if(c>d){
-        if(Math.floor((d)%2)==0){
-            for(let i=0;i<Math.floor((c-d)/2);i++){
-            e[i]=Math.floor(d)+1+2*i
-            }
+      for(let i=d;i<c;i++){
+        
+                if((i%2)==0){
+            e.push(Number(i))
+                            }
         }
-        else {
-            for(let i=0;i<Math.floor((c-d)/2);i++){
-                e[i]=Math.floor(d)+2+2*i
-                }
-        } 
-       
     }
     else if(c<d)  {
-        if(Math.floor((c)%2==0)){
-            for(let i=0;i<Math.floor((d-c)/2);i++){
-            e[i]=Math.floor(c)+1+2*i
+        
+            for(let i=c;i<d;i++){
+                if((i%2)==0){
+            e.push(Number(i))
             }
         }
-        else  {
-            for(let i=0;i<Math.floor((d-c)/2);i++){
-                e[i]=Math.floor(c)+2+2*i
-                }
-        }
+        
     }
-  
-    // console.log(c)
-    // console.log(d)
     console.log(e);
 }
-
-// (even(a,b))
-odd(a,b)
+function odd(c,d,e){
+    // c=a
+    // d=b
+    e=[]
+    if(c>d){
+      for(let i=d;i<c-1;i++){
+        
+                if((i%2)==0){
+            e.push(Number(i)+1)
+                            }
+        }
+    }
+    else if(c<d)  {
+        
+            for(let i=c;i<d-1;i++){
+                if((i%2)==0){
+            e.push(Number(i)+1)
+            }
+        }
+        
+    }
+    console.log(e);
+}
+let f;
+even(a,b,f)
+odd(a,b,f)
