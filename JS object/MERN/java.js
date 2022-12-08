@@ -59,8 +59,8 @@ for(i=0;i<y.length;i++)
     for(j=0;j<y.length;j++){
 
         
-        if(y[i].skills.length>y[j].skills.length){
-            max=y[i]
+        if(y[i].skills.length<y[j].skills.length){
+            max=y[j]
         }
     }
     
@@ -80,14 +80,16 @@ let count=0
         console.log("MERN developers",y[i])
     }
   }
-let max1=0;
-let max2=0;
-let max3=0;
+
   for(i=0;i<y.length;i++){
-    for(j=0;j<y.length;j++){
+    for(j=i+1;j<y.length;j++){
         if(y[i].age>y[j].age){
-            max1=y[i]
+            let z=y[i]
+            y[i]=y[j]
+            y[j]=z
         }
     }
   }
-  console.log("hamgiin ahmad", max1)
+  console.log("hamgiin ahmad", y[y.length-1])
+  console.log("2 dah ahmad", y[y.length-2])
+  console.log("3 dah ahmad",y[y.length-3])
