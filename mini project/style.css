@@ -41,3 +41,10 @@ h1:last-child(){
     list-style: none;
     justify-content: center;
 }
+.icons{
+    width: 1.5em;
+    height: 1.5em;
+}
+li{
+    position: relative;
+}
