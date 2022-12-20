@@ -1,0 +1,17 @@
+form{
+    display: flex;
+    flex-direction: column;
+    max-width: 1280px;
+    gap: 20px;
+}
+input{
+    width: 500px;
+}
+select{
+    width: 508px;
+}
+button{
+    width: 100px;
+    height: 50px;
+    background-color: aqua;
+}
