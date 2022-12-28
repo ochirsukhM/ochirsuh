@@ -1,0 +1,19 @@
+img{
+    box-sizing: content-box;
+    width: 200px;
+    height: 200px;
+    margin: 50px;
+}
+#container{
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    gap:20px;
+  justify-content: baseline;
+}
+#container div{
+    width: 300px;
+    text-align: center;
+    background-color: lightcyan;
+    border-radius: 20px;
+}
