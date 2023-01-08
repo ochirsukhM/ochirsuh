@@ -2,6 +2,7 @@ import './App.css';
 import Navbar from './components/Navbar';
 import Header from './components/Header';
 import Main from './components/Main';
+import News from './components/News';
 
 const navbarItems = [
   {title:"Our story"},
@@ -64,7 +65,7 @@ const main1Items= [
   },
 ]
 
-const news =[
+const newsItems =[
   {
   img:require('./images/pic1.png'), 
   head:"Understanding Long Covid",
@@ -196,7 +197,7 @@ function App() {
       
       </div>
       <Main c={main1Items}/>
-       
+       <News d={newsItems}/>
     </div>
   );
 }

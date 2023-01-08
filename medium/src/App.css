@@ -149,3 +149,30 @@ border-bottom: 1px solid black;
   align-items: center;
   gap:20px
 }
+.news00{
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+.aa{
+  display: flex;
+  width: 50%;
+}
+.icons{
+  width: 30px;
+  height: 30px;
+}
+.news01{
+display: flex;
+flex-direction: column;
+}
+.ab{
+  display: flex;
+  align-items: center;
+}
+.ac{
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
