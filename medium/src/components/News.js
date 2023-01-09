@@ -12,7 +12,8 @@ export default function News({ d }) {
                             <h1>{e.head}</h1>
                             <h4>{e.title}</h4>
                             <div className="ac">
-                                <h6>{e.date} {e.read} {e.key}</h6>
+                                <h6>{e.date} · {e.read} </h6>
+                                <a href="">{e.key}</a>
                                 <img src={e.star} alt="" />
                             </div>
                         </div>

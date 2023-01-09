@@ -20,7 +20,7 @@ export default function Main({c}){
                     
                     <h6>{e.text2}</h6>
                     <div>
-                    <p>{e.date} {e.read}</p>
+                    <p>{e.date} · {e.read}</p>
                     <img src={e.icon} alt=""/>
                     </div>
                     
