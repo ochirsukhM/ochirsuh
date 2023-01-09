@@ -15,8 +15,10 @@ function App() {
     }  
     const newArr=[...tasks]
     newArr.push(newObj)
+    
     setTasks(newArr)
     setTask("")
+    
   }
 
   const onDoneTask=(id)=>{
@@ -32,13 +34,26 @@ function App() {
     
     }))
     setTasks(objList);
-    showDoneTotal()
+    showDoneTotal();
+
+   
   }
+  function deleteTask(ac){
+    if(ac.id==ac.id)
+    {
+      const b=tasks.splice(ac,1)
+      console.log(b);
+      b.task=""
+      setTask(b);
+      
+    }
+}
 
   function showDoneTotal(){
     const arr= tasks.filter((e)=>e.isDone==true)
     setCount(arr.length)
   }
+
 
   return (
     <div className="container">
@@ -72,7 +87,7 @@ function App() {
                   </div>
                   <div>
                     <button className='btn btn-warning'>Edit</button>
-                    <button className='btn btn-danger'>Delete</button>
+                    <button className='btn btn-danger' onClick={()=>deleteTask(e)}>Delete</button>
                   </div>
                 </div>
               ))
