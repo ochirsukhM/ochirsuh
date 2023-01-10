@@ -4,10 +4,12 @@ import {useState} from 'react'
 function App() {
   const[task, setTask] = useState("");
   const[tasks,setTasks]=useState([]);
-  const[isDone,setIsDone]=useState(false)
-  const[count,setCount]=useState(0)
+  const[count,setCount]=useState(0);
+  
 
   const addTask =()=>{
+
+    console.log("add",tasks);
     const newObj= {
       id:tasks.length,
       title:task,
@@ -15,12 +17,10 @@ function App() {
     }  
     const newArr=[...tasks]
     newArr.push(newObj)
-    
     setTasks(newArr)
     setTask("")
-    
-  }
-
+    }
+  
   const onDoneTask=(id)=>{
     const objList = tasks.map((val=>{
       if (val.id==id){
@@ -35,19 +35,30 @@ function App() {
     }))
     setTasks(objList);
     showDoneTotal();
-
-   
-  }
-  function deleteTask(ac){
-    if(ac.id==ac.id)
-    {
-      const b=tasks.splice(ac,1)
-      console.log(b);
-      b.task=""
-      setTask(b);
-      
-    }
 }
+
+function editTask(id){
+  tasks.map((e)=>{
+    if(e.id==id){
+      setTask(e.title)
+    }
+  })
+}
+
+  function deleteTask(id){
+    tasks.map((e)=>{
+      if(e.id == id){
+        let newArr = [...tasks];
+        newArr.splice(newArr.indexOf(e) , 1)
+        setTasks(newArr);
+        console.log("delet",newArr);
+
+      }
+    })
+
+    
+
+    }
 
   function showDoneTotal(){
     const arr= tasks.filter((e)=>e.isDone==true)
@@ -81,13 +92,14 @@ function App() {
                     <input
                     type="checkbox" 
                     checked={e.isDone} 
-                    onChange={()=>onDoneTask(e.id)}
+                    onChange={()=>onDoneTask(e.id)
+                    }
                     />
                     <h4>{e.title}</h4>
                   </div>
                   <div>
-                    <button className='btn btn-warning'>Edit</button>
-                    <button className='btn btn-danger' onClick={()=>deleteTask(e)}>Delete</button>
+                    <button className='btn btn-warning' onClick={()=> editTask(e.id)}>Edit</button>
+                    <button className='btn btn-danger' onClick={()=>deleteTask(e.id)}>Delete</button>
                   </div>
                 </div>
               ))
