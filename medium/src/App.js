@@ -191,8 +191,9 @@ const newsItems =[
 function App() {
   return (
     <div className="App">
+      <Navbar b={navbarItems}/>
       <div className='container'>
-       <Navbar b={navbarItems}/>
+       
       <Header/>
       
       </div>

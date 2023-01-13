@@ -1,93 +1,95 @@
-import React, { useState } from "react";
-
-import "./App.css";
-// import LightSwitch from "./components/Light";
+import "./App.css"
+import { useState } from "react";
 import Modal from "./components/Modal";
-// import Signup from "./components/Signup";
-// import Toolbar from "./components/Toolbar";
-import Todolist from "./components/Todolist";
-
-//id, title, isDone
 function App() {
-  const init={
-    id:"",
-    task:"",
-    type:0,
-    isImportant:false,
-    isDone:false,
-  }
+  // const [task, setTask] = useState(""); // input
+  // const [tasks, setTasks] = useState([]);
+  // const [ID, setId] = useState("0");
+  // const [modal, setModal] = useState(false);
 
-  const [task, setTask] = useState(""); // input
-  const [tasks, setTasks] = useState([]);
-  const [ID, setId] = useState("0");
-  const [modal, setModal] = useState(false);
-  const [doneTotal, setDoneTotal] = useState(0);
-  const [taskObj,setTaskObj] = useState(init)
+  // const [doneTotal, setDoneTotal] = useState(0);
+
+  const [object, setObject] =useState({
+    task:"",
+    tasks:[],
+    ID:"0",
+    modal:false,
+    doneTotal:0
+  })
 
   const addTask = () => {
-    // const newObj = {
-    //   id: createId(),
-    //   title: task,
-    //   isDone: false,
-    // };
+    const newObj = {
+      id: createId(),
+      title: object.task,
+      isDone: false,
+    };
 
-    const newArr = [...tasks];
+    const newArr = [...object.tasks];
 
-    // if (ID !== "0") {
-    //   newArr.map((e) => {
-    //     if (e.id === ID) {
-    //       e.title = task;
-    //     }
-    //     return e;
-    //   });
-    // } else {
-    //   newArr.push(newObj);
-    // }
+    if (object.ID !== "0") {
+      newArr.map((e) => {
+        if (e.id === object.ID) {
+          e.title = object.task;
+        }
+        return e;
+      });
+    } else {
+      newArr.push(newObj);
+    }
 
-    // console.log(newObj);
-    newArr.push({...taskObj,id:createId()})
-    setTasks(newArr);
+    // setTasks(newArr);
+    setObject({...object,tasks:newArr})
 
     // setTask("");
+    setObject({...object,task:""})
+
     // setId("0");
-    setModal(false);
-    setTaskObj(init)
+    setObject({...object,ID:"0"})
+
+    // setModal(false);
+    setObject({...object,modal:false})
   };
 
   const onDoneTask = (id) => {
-    const objList = tasks.map((val) => {
+    const objList = object.tasks.map((val) => {
       if (val.id === id) {
         console.log(val);
 
         val.isDone = !val.isDone;
 
         if (val.isDone) {
-          setDoneTotal(doneTotal + 1);
+          // setDoneTotal(doneTotal + 1);
+          setObject({...object,doneTotal:object.doneTotal+1})
         } else {
-          setDoneTotal(doneTotal - 1);
+          // setDoneTotal(doneTotal - 1);
+          setObject({...object,doneTotal:object.doneTotal-1})
         }
       }
       return val;
     });
 
-    setTasks(objList);
+    // setTasks(objList);
+    setObject({...object,tasks:objList})
   };
 
   const handleModal = () => {
-    setModal(!modal);
+    // setModal(!modal);
+    setObject({...object,modal:!object.modal})
   };
 
   const handleEdit = (id, title, isDone) => {
     if (!isDone) {
-      setTask(title);
-      setId(id);
-      setModal(true);
+      // setTask(title);
+      // setId(id);
+      // setModal(true);
+      setObject({...object,task:title,ID:id,modal:true})
     }
   };
 
   const handleDelete = (id) => {
-    const newArr = tasks.filter((e) => e.id !== id);
-    setTasks(newArr);
+    const newArr = object.tasks.filter((e) => e.id !== id);
+    // setTasks(newArr);
+    setObject({...object,tasks:newArr})
   };
 
   function createId() {
@@ -95,7 +97,7 @@ function App() {
 
     let num = "1234567890";
 
-    console.log(Math.random(1 * 10));
+  
 
     let newStr =
       abc.split("")[Math.floor(Math.random() * 10 + 1)] +
@@ -109,7 +111,7 @@ function App() {
       "" +
       num.split("")[Math.floor(Math.random() * 10)];
 
-    console.log(newStr + newNumber);
+   
 
     return newStr + newNumber;
   }
@@ -117,45 +119,79 @@ function App() {
   return (
     <div className="container">
       <div className="row mt-4">
-        {/* <Toolbar /> */}
-
-        {/*
-        <Signup /> 
-         <LightSwitch />
-         */}
+      
 
         <div className="col-md-4">
           <h1>Todo List</h1>
-          Total {tasks.length}
-          <p>Done {doneTotal}</p>
-          <div className="d-flex gap-3 justify-content-between align-items-center">
+          Total {object.tasks.length}
+          <p>Done {object.doneTotal}</p>
+          <div className="d-flex gap-3">
+            <input
+              id="HAH"
+              className="form-control"
+              type="text"
+              value={object.task}
+              // onChange={(e) => setTask(e.target.value)}
+              onChange={(e)=>setObject({...object,task:e.target.value})}
+              placeholder="task oruulna uu"
+            />
+            <input type="hidden" value={object.ID} />
+            <button className="btn btn-primary" onClick={addTask}>
+              +Add
+            </button>
             <button className="btn btn-primary" onClick={handleModal}>
-              +Add task
+              Modal
             </button>
           </div>
         </div>
       </div>
       <div className="row mt-3">
-        <Todolist
-        tasks={tasks}
-        handleDelete={handleDelete}
-        handleEdit={handleEdit}
-        onDoneTask={onDoneTask}
-        />
-    
+        <div className="col-md-4">
+          {object.tasks.map((e) => (
+            <div className="d-flex justify-content-between align-items-center">
+              <div className="d-flex">
+                <input
+                  type="checkbox"
+                  checked={e.isDone}
+                  onChange={() => onDoneTask(e.id)}
+                />
+
+                <h4>{e.title}</h4>
+              </div>
+              <div>
+                <button
+                  className="btn btn-warning"
+                  onClick={() => handleEdit(e.id, e.title, e.isDone)}
+                >
+                  Edit
+                </button>
+                <button
+                  className="btn btn-danger"
+                  onClick={() => handleDelete(e.id)}
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+        {object.modal && (
           <Modal
-            modal={modal}
+            modal={object.modal}
             setModal={handleModal}
-            id={ID}
+            task={object.task}
+            id={object.ID}
+            // setTask={setTask}
+           setTask= {setObject}
             addTask={addTask}
-            taskObj={taskObj}
-            setTaskObj={setTaskObj}
             // setTasks={setTasks}
+            setTasks={setObject}
           />
-      
+        )}
       </div>
     </div>
   );
 }
 
 export default App;
+
