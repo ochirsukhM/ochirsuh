@@ -27,17 +27,17 @@ export default function Modal(
                         name="task"
                         className="form-control"
                         type="text"
-                        value={taskObj.task}
+                        value={taskObj.title}
                         onChange={(e)=>{
-                            setTaskObj({...taskObj,task:e.target.value})
+                            setTaskObj({...taskObj, title : e.target.value})
                         }}
                         placeholder="input task"
                         />
-                        <input type="hidden" value={id}/>
+                        <input type="hidden" value={taskObj.id}/>
                         <button className="btn btn-primary" onClick={addTask}>
                             +add
                         </button>
-                        <hr/>
+                        
                         <div Modal></div>
                         <hr/>
 

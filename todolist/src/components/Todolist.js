@@ -18,19 +18,19 @@ export default function Todolist(
                             checked={e.isDone}
                             onChange={()=>onDoneTask(e.id)}
                             />
-                            <span>{e.task}</span>
+                            <span>{e.title}</span>
                         </div>
-                        <div className="col-md-2">
+                        {/* <div className="col-md-2">
                             {e.type==="1" ? "Work":"Personal"}
                         </div>
                         <div className="col-md-2">
                             {e.isImportant ? "yes" : "no"}
-                        </div>
+                        </div> */}
                         <div className="col-md-4">
                             <button
                             className="btn badge bg-warning"
                             onClick={()=>
-                            handleEdit(e.id,e.task,e.isDone,e.type,e.isImportant)}
+                            handleEdit(e.id,e.title,e.isDone)}
                             >Edit</button>
                             <button
                             className="btn badge bg-danger"

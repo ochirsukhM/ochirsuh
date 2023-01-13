@@ -1,96 +1,107 @@
 import "./App.css"
 import { useState } from "react";
 import Modal from "./components/Modal";
+import Todolist from "./components/Todolist";
+
 function App() {
-  // const [task, setTask] = useState(""); // input
-  // const [tasks, setTasks] = useState([]);
+  const init={
+    id:"",
+    title:"",
+    type:0,
+    isImportant:false,
+    isDone:false,
+  }
+  const [tasks, setTasks] = useState([]);
   // const [ID, setId] = useState("0");
-  // const [modal, setModal] = useState(false);
-
-  // const [doneTotal, setDoneTotal] = useState(0);
-
-  const [object, setObject] =useState({
-    task:"",
-    tasks:[],
-    ID:"0",
-    modal:false,
-    doneTotal:0
-  })
+  const [modal, setModal] = useState(false);
+  const [doneTotal, setDoneTotal] = useState(0);
+  const [taskObj,setTaskObj] = useState(init)
 
   const addTask = () => {
-    const newObj = {
-      id: createId(),
-      title: object.task,
-      isDone: false,
-    };
+   
 
-    const newArr = [...object.tasks];
+    const newArr = [...tasks];
 
-    if (object.ID !== "0") {
-      newArr.map((e) => {
-        if (e.id === object.ID) {
-          e.title = object.task;
+    console.log("Edit",taskObj);
+
+    if (taskObj.id !== "") {
+
+      console.log("Edit");
+     
+     const r = newArr.map((e) => {
+
+     
+
+        if (e.id === taskObj.id) {
+          console.log(taskObj);
+         return {...e, title: taskObj.title }
+        } else {
+          return e;
         }
-        return e;
       });
+
+      setTasks(r)
     } else {
-      newArr.push(newObj);
+
+      setTasks([...tasks, {...taskObj,id:createId()}])
+      // newArr.push({...taskObj,id:createId()})
     }
 
+    // console.log(newObj);
+
     // setTasks(newArr);
-    setObject({...object,tasks:newArr})
-
+  
     // setTask("");
-    setObject({...object,task:""})
-
     // setId("0");
-    setObject({...object,ID:"0"})
-
-    // setModal(false);
-    setObject({...object,modal:false})
+    setModal(false);
+    setTaskObj(init)
+    
   };
 
   const onDoneTask = (id) => {
-    const objList = object.tasks.map((val) => {
+    const objList = tasks.map((val) => {
       if (val.id === id) {
         console.log(val);
 
         val.isDone = !val.isDone;
-
+      
         if (val.isDone) {
-          // setDoneTotal(doneTotal + 1);
-          setObject({...object,doneTotal:object.doneTotal+1})
+          setDoneTotal(doneTotal + 1);
         } else {
-          // setDoneTotal(doneTotal - 1);
-          setObject({...object,doneTotal:object.doneTotal-1})
+          setDoneTotal(doneTotal - 1);
         }
       }
       return val;
     });
 
-    // setTasks(objList);
-    setObject({...object,tasks:objList})
+     setTasks(objList);
+    
   };
 
   const handleModal = () => {
-    // setModal(!modal);
-    setObject({...object,modal:!object.modal})
+     setModal(!modal);
+    
   };
 
   const handleEdit = (id, title, isDone) => {
     if (!isDone) {
       // setTask(title);
       // setId(id);
-      // setModal(true);
-      setObject({...object,task:title,ID:id,modal:true})
-    }
-  };
+      setModal(true);
+      setTaskObj({...taskObj, id:id, title : title})
+    }}
 
   const handleDelete = (id) => {
-    const newArr = object.tasks.filter((e) => e.id !== id);
-    // setTasks(newArr);
-    setObject({...object,tasks:newArr})
+    const newArr = tasks.filter((e) => e.id !== id);
+    setTasks(newArr);
+    countDone(taskObj.isDone)
+    
   };
+
+  const countDone= (isDone) =>{
+    const a= taskObj.filter((e)=>e.isDone!== isDone)
+    setDoneTotal(doneTotal=a.length)
+  }
 
   function createId() {
     let abc = "ABCDEFJHJKLMNO";
@@ -122,76 +133,42 @@ function App() {
       
 
         <div className="col-md-4">
-          <h1>Todo List</h1>
-          Total {object.tasks.length}
-          <p>Done {object.doneTotal}</p>
-          <div className="d-flex gap-3">
-            <input
-              id="HAH"
-              className="form-control"
-              type="text"
-              value={object.task}
-              // onChange={(e) => setTask(e.target.value)}
-              onChange={(e)=>setObject({...object,task:e.target.value})}
-              placeholder="task oruulna uu"
-            />
-            <input type="hidden" value={object.ID} />
-            <button className="btn btn-primary" onClick={addTask}>
-              +Add
-            </button>
+        <h1>Todo List</h1>
+          Total {tasks.length}
+          <p>Done {doneTotal}</p>
+          <div className="d-flex gap-3 justify-content-between align-items-center">
             <button className="btn btn-primary" onClick={handleModal}>
-              Modal
+              +Add task
             </button>
           </div>
         </div>
       </div>
       <div className="row mt-3">
-        <div className="col-md-4">
-          {object.tasks.map((e) => (
-            <div className="d-flex justify-content-between align-items-center">
-              <div className="d-flex">
-                <input
-                  type="checkbox"
-                  checked={e.isDone}
-                  onChange={() => onDoneTask(e.id)}
-                />
+       
+         
+        <Todolist
+        tasks={tasks}
+        handleDelete={handleDelete}
+        handleEdit={handleEdit}
+        onDoneTask={onDoneTask}
+        />
 
-                <h4>{e.title}</h4>
-              </div>
-              <div>
-                <button
-                  className="btn btn-warning"
-                  onClick={() => handleEdit(e.id, e.title, e.isDone)}
-                >
-                  Edit
-                </button>
-                <button
-                  className="btn btn-danger"
-                  onClick={() => handleDelete(e.id)}
-                >
-                  Delete
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-        {object.modal && (
           <Modal
-            modal={object.modal}
+            modal={modal}
             setModal={handleModal}
-            task={object.task}
-            id={object.ID}
-            // setTask={setTask}
-           setTask= {setObject}
+            // id={ID}
             addTask={addTask}
+            taskObj={taskObj}
+            setTaskObj={setTaskObj}
             // setTasks={setTasks}
-            setTasks={setObject}
           />
-        )}
+       
+       
+      
       </div>
     </div>
   );
 }
 
-export default App;
 
+export default App;
