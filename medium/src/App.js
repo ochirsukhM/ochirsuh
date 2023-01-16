@@ -3,7 +3,7 @@ import Navbar from './components/Navbar';
 import Header from './components/Header';
 import Main from './components/Main';
 import News from './components/News';
-
+import { useState } from 'react';
 const navbarItems = [
   {title:"Our story"},
   {title:"Membership"},
@@ -188,10 +188,49 @@ const newsItems =[
                       },
 ]
 
+
 function App() {
+
+  const [data, setData] = useState([]);
+const [user, setUser] = useState("");
+const [showModal, setShowModal] = useState(false);
+
+const [bgColor, setBgColor] = useState(user ? "white" : "#ffc017");
+const objStyle = {
+  backgroundColor: bgColor,
+};
+const handleScroll = (event) => {
+  if (user) {
+    setBgColor("white");
+  } else {
+    if (event.currentTarget.scrollTop >= 600) {
+      setBgColor("white");
+    } else {
+      setBgColor("#ffc017");
+    }
+  }
+};
+const openModal = () => {
+  setShowModal(!showModal);
+};
+
+const onLogin = (username, password) => {
+  if (username == "Bold" && password == "qweqwe") {
+    setShowModal(false);
+    setUser(username);
+  } else {
+    alert("Tanii ner eswel password buruu bnaa, zasna uu");
+  }
+};
   return (
-    <div className="App">
-      <Navbar b={navbarItems}/>
+    <div  style={{ width: "100vw", overflow: "scroll", height: "100vh" }}
+    onScroll={handleScroll} className="App">
+      <Navbar style={objStyle}
+        onLogin={onLogin}
+        user={user}
+        setUser={setUser}
+        showModal={showModal}
+        openModal={openModal}/>
       <div className='container'>
        
       <Header/>
