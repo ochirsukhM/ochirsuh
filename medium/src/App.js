@@ -188,6 +188,20 @@ const newsItems =[
                       },
 ]
 
+const cate= [
+  {title: "Programming"},
+  {title: "Data Science"},
+  {title:"Technology"},
+  {title:"Self Improvement"},
+  {title:"Writing"},
+  {title:"Relationships"},
+  {title:"Machine Learning"},
+  {title:"Productivity"},
+  {title:"Politics"},
+
+
+]
+
 function App() {
   return (
     <div className="App">
