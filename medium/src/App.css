@@ -240,6 +240,9 @@ gap:0px
   text-decoration: none;
   color: gray;
 }
+.footer10{
+  position: sticky;
+}
 .modal {
   position: fixed;
   top: 0;
