@@ -20,8 +20,8 @@ export default function Navbar({
   ];
 
   return (
-    <div style={style} className=" header">
-      <div className="menus">
+    <div style={style} className="navbar">
+      <div className="container1">
         <img
           width={150}
           height={30}
@@ -30,7 +30,7 @@ export default function Navbar({
           alt="logo"
         />
         <nav>
-          <ul className="">
+          <ul className="menus">
             {cates.map((a, index) => (
               <>
                 <li className="list-item" key={index}>

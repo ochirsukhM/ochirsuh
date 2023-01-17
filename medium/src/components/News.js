@@ -7,10 +7,13 @@ export default function News({ d }) {
                         <div className="news01">
                             <div className="ab">
                                 <img className="icons" src={e.icon} alt="" />
-                                <h1>{e.name}</h1>
+                                <h4>{e.name}</h4>
                             </div>
-                            <h1>{e.head}</h1>
-                            <h4>{e.title}</h4>
+                            <div>
+                            <h2>{e.head}</h2>
+                            <h5>{e.title}</h5>
+                            </div>
+                            
                             <div className="ac">
                                 <h6>{e.date} · {e.read} </h6>
                                 <a href="">{e.key}</a>
