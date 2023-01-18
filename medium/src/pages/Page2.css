@@ -50,3 +50,23 @@
     text-decoration: none;
     color: #706E72;
 }
+.mainNav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.mainNav1{
+    display: flex;
+    align-items: center;
+}
+.mainNav1 img{
+    width: 48px;
+    height: 48px;
+}
+.mainNav2{
+    display: flex;
+    gap:40px;
+}
+.mainMain{
+    max-width: 680px;
+}

@@ -5,7 +5,36 @@ import Main from './components/Main';
 import News from './components/News';
 import { useState } from 'react';
 import Footer from './components/Footer';
+import { Route,Routes } from 'react-router-dom';
+import Login from "./components/Login";
+import Admin from "./components/Admin";
 
+const users = [
+  {
+    id: 1,
+    username: "U00001",
+    firstName: "Kylie",
+    organization: "Forbes",
+    password: "qweqwe",
+    type: "superuser",
+  },
+  {
+    id: 2,
+    username: "U83901",
+    firstName: "John",
+    organization: "Forbes",
+    password: "qweqwe",
+    type: "user",
+  },
+  {
+    id: 3,
+    username: "U83902",
+    firstName: "Taylor",
+    organization: "Forbes",
+    password: "qweqwe",
+    type: "user",
+  },
+];
 const main1Items = [
   {
     id: "01",
@@ -187,10 +216,10 @@ const newsItems = [
 
 function App() {
 
-  const [data, setData] = useState(newsItems);
+  const [data, setData] = useState([]);
   const [user, setUser] = useState("");
   const [showModal, setShowModal] = useState(false);
-
+  const [admin, setAdmin] = useState(false);
   const [bgColor, setBgColor] = useState(user ? "white" : "#ffc017");
   const objStyle = {
     backgroundColor: bgColor,
@@ -210,18 +239,21 @@ function App() {
     setShowModal(!showModal);
   };
 
-  const onLogin = (username, password) => {
-    if (username == "Bold" && password == "qweqwe") {
-      setShowModal(false);
-      setUser(username);
-    } else {
-      alert("Tanii ner eswel password buruu bnaa, zasna uu");
-    }
+  const onLogin = (uname, pword) => {
+    users.map((userObj) => {
+      if (userObj.username == uname && userObj.password == pword) {
+        setShowModal(false);
+        setUser(userObj);
+
+        return "success";
+      }
+    });
   };
-  const filterItems = (event)=>{
-      setData(data.filter(data.key==data.key))
-  }
+  // const filterItems = (event)=>{
+  //     setData(data.filter(data.key==data.key))
+  // }
   return (
+    <div> {!admin ? (
     <div style={{ width: "100vw", overflow: "scroll", height: "100vh" }}
       onScroll={handleScroll} className="App">
       <Navbar style={objStyle}
@@ -229,7 +261,22 @@ function App() {
         user={user}
         setUser={setUser}
         showModal={showModal}
-        openModal={openModal} />
+        openModal={openModal}
+        setAdmin={setAdmin} />
+        {/* <div>
+          <Routes>
+            <Route path="/"
+            element={
+              <>
+              {!user&&<Imagesection/>}
+              <Main user={user}/>
+              </>
+            }
+            />
+            <Route path="/about" element={<About/>}/>
+            <Route path='/newsdetails/:id' element={<NewsDetail/>}/>
+          </Routes>
+        </div> */}
       <div className='container'>
 
         <Header />
@@ -237,9 +284,17 @@ function App() {
       </div>
       <Main c={main1Items} />
       <div className='footer2'>
-        <News d={data} />
+        <News d={newsItems} />
         <Footer afooter={newsItems} />
       </div>
+      </div>) :(
+        <div>
+          <Routes>
+            <Route exact path="/login" element={<Login/>}/>
+            <Route path='/admin' element={<Admin/>}/>
+          </Routes>
+        </div>
+      )}
 
     </div>
   );
