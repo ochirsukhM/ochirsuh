@@ -277,7 +277,7 @@ function App() {
             <Route path='/newsdetails/:id' element={<NewsDetail/>}/>
           </Routes>
         </div> */}
-      <div className='container'>
+      <div className='container123'>
 
         <Header />
 

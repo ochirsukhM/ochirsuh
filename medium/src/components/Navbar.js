@@ -21,7 +21,7 @@ export default function Navbar({
   ];
 
   return (
-    <div style={style} className="navbar">
+    <div style={style} className="navbar123">
       <div className="container1">
         <img
           width={150}
@@ -53,7 +53,7 @@ export default function Navbar({
             ))}
 
             {user && (
-              <button className="btn btn-warning" onClick={() => setUser({})}>
+              <button className="btn btn-warning" onClick={() => setUser("")}>
                 Log Out
               </button>
             )}

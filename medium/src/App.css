@@ -37,7 +37,7 @@
 .App{
   position: static;
 }
-.container{
+.container123{
   background-color: #FFC017;
 }
 
@@ -53,7 +53,7 @@
   margin: auto;
  
 }
-.navbar{
+.navbar123{
 position: fixed;
 width: 100%;
 z-index: 1;
@@ -87,6 +87,7 @@ li{
 .header{
   border-bottom: 1px solid black;
   margin-top: 90px;
+  height: 480px;
 }
 .subheader{
   display: flex;
@@ -180,10 +181,15 @@ border-bottom: 1px solid black;
   width: 30px;
   height: 30px;
 }
+.news00{
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
 .news01{
 display: flex;
 flex-direction: column;
-gap:0px
+gap:0px;
 }
 .ab{
   display: flex;

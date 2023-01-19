@@ -16,7 +16,7 @@ export default function Login() {
                 <input className="form-control" />
               </div>
               <div className="mb3">
-                <label className="form-label">User name</label>
+                <label className="form-label">Password</label>
                 <input className="form-control" />
               </div>
               <div className="mb3">
