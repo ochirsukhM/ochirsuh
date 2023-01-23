@@ -5,11 +5,11 @@ export default function Admin() {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        fetch("http://192.168.1.50:4040/news")
+        fetch("https://medium-api-psi.vercel.app/api/news")
             .then((response) => response.json())
             .then((dt) => {
-                console.log(dt.news);
-                setData(dt.news);
+                console.log(dt.result);
+                setData(dt.result);
             })
     }, [])
 
@@ -20,7 +20,7 @@ export default function Admin() {
         <div className="navbar bg-dark flex-nowrap">
 
             <a className="col-md3 navbar-brand text-light" href="#">Company Name</a>
-            <input type="text" className="w-100 form-control bg-dark text-light" />
+            <input type="text" className="w-50 form-control bg-dark text-light" />
             <div className="nav">
                 <div className="nav-item">
                     <span className="text-light">Log out</span>
@@ -76,8 +76,8 @@ export default function Admin() {
                             </div>
                         </div>
                     </div>
-                    <BarChart/>
-                    <PieChart/>
+                    {/* <BarChart/>
+                    <PieChart/> */}
                     <div className="row p-3">
                             <div className="table-responsive">
                                 <table className="table">
@@ -114,7 +114,15 @@ export default function Admin() {
                         </div>
                 </div>
             </div>
-
+            <div className="row">
+                <div className="col-md-4">
+                <form className="form-control">
+                    <input className="form-control" placeholder="username" type="text"/>
+                    <input className="form-control" placeholder="" type="password"/>
+                </form>
+                </div>
+                
+            </div>
 
         </div>
     </div>
