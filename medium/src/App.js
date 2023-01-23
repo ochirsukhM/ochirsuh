@@ -5,9 +5,12 @@ import Main from './components/Main';
 import News from './components/News';
 import { useState } from 'react';
 import Footer from './components/Footer';
-import { Route,Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Login from "./components/Login";
 import Admin from "./components/Admin";
+import AdminDash from './components/AdminDash';
+import Users from './components/Users';
+import AddUser from './components/AddUser';
 
 const users = [
   {
@@ -254,15 +257,15 @@ function App() {
   // }
   return (
     <div> {!admin ? (
-    <div style={{ width: "100vw", overflow: "scroll", height: "100vh" }}
-      onScroll={handleScroll} className="App">
-      <Navbar style={objStyle}
-        onLogin={onLogin}
-        user={user}
-        setUser={setUser}
-        showModal={showModal}
-        openModal={openModal}
-        setAdmin={setAdmin} />
+      <div style={{ width: "100vw", overflow: "scroll", height: "100vh" }}
+        onScroll={handleScroll} className="App">
+        <Navbar style={objStyle}
+          onLogin={onLogin}
+          user={user}
+          setUser={setUser}
+          showModal={showModal}
+          openModal={openModal}
+          setAdmin={setAdmin} />
         {/* <div>
           <Routes>
             <Route path="/"
@@ -277,24 +280,28 @@ function App() {
             <Route path='/newsdetails/:id' element={<NewsDetail/>}/>
           </Routes>
         </div> */}
-      <div className='container123'>
+        <div className='container123'>
 
-        <Header />
+          <Header />
 
-      </div>
-      <Main c={main1Items} />
-      <div className='footer2'>
-        <News d={newsItems} />
-        <Footer afooter={newsItems} />
-      </div>
-      </div>) :(
-        <div>
-          <Routes>
-            <Route exact path="/login" element={<Login/>}/>
-            <Route path='/admin' element={<Admin/>}/>
-          </Routes>
         </div>
-      )}
+        <Main c={main1Items} />
+        <div className='footer2'>
+          <News d={newsItems} />
+          <Footer afooter={newsItems} />
+        </div>
+      </div>) : (
+      <div>
+        <Routes>
+          <Route exact path="/login" element={<Login />} />
+          <Route element={<Admin />}>
+            <Route index path="/admin" element={<AdminDash />} />
+            <Route path="/users" element={<Users />} />
+            <Route path="/adduser" element={<AddUser />} />
+          </Route>
+        </Routes>
+      </div>
+    )}
 
     </div>
   );
