@@ -49,7 +49,7 @@ export default function LoginModal({
 
               <span
                 onClick={() => {
-                  setAdmin(true);
+                  
                   navigate("/login");
                 }}
               >

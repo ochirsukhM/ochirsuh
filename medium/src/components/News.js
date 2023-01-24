@@ -1,9 +1,11 @@
-export default function News({ d }) {
+import { newsItems } from "./data"
+
+export default function News() {
     return (
         <div className="news00">
-            {d.map((e) => {
+            {newsItems.map((e) => {
                 return (
-                    <div className="aa">
+                    <div className="abc">
                         <div className="news01">
                             <div className="ab">
                                 <img className="icons" src={e.icon} alt="" />

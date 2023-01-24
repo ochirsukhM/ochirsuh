@@ -218,8 +218,19 @@ border-bottom: 1px solid black;
   flex-direction: column;
 } */
 .aa{
+
+  border-top: 1px solid black;
+ 
+}
+.abc{
   display: flex;
-  justify-content: space-between; 
+  justify-content: space-between;
+}
+.containeraa{
+  display: flex;
+  max-width: 1200px;
+  margin: auto;
+  justify-content: space-between;
 }
 .icons{
   width: 30px;

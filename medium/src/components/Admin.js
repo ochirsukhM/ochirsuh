@@ -31,7 +31,7 @@ export default function Admin() {
                             <a className="nav-link">News</a>
                         </div>
                         <div className="nav-item">
-                            <Link to="users" className="nav-link">User</Link>
+                            <Link to="/users" className="nav-link">User</Link>
                         </div>
                     </div>
                 </div>

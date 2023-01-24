@@ -1,4 +1,8 @@
-export default function Main({c}){
+import { main1Items } from "./data"
+import News from "./News"
+import Footer from "./Footer"
+
+export default function Main(){
     return (
         <div className='main1'>
         <div className='trend'>
@@ -6,7 +10,7 @@ export default function Main({c}){
             <h6>Trending on medium</h6>
         </div>
           <div className="main2">
-          {c.map((e)=>{
+          {main1Items.map((e)=>{
                  return (
                     <div className="mainitems">
                  <div>
@@ -28,8 +32,15 @@ export default function Main({c}){
                 </div>)
             })}
           </div>
-   
-            
+          <div className="aa">
+            <div className="containeraa">
+            <News/>
+                <Footer/>
+            </div>
+         
+          </div>
+                
+
            </div>
         
     )

@@ -18,12 +18,12 @@ export default function AddUser() {
 
     console.log(user);
 
-    fetch("http://localhost:3000/api/news", {
+    fetch("https://medium-api-psi.vercel.app/api/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: user,
+      body: JSON.stringify(user),
     })
       .then((res) => res.json())
       .then((data) => {
@@ -33,6 +33,7 @@ export default function AddUser() {
       .catch((err) => console.log(err));
   };
 
+  // 
   return (
     <div>
       <form>
@@ -66,7 +67,7 @@ export default function AddUser() {
             }}
           />
         </div>
-        <button onClick={onSave}>Save</button>
+        <button className="btn btn-primary" onClick={onSave}>Save</button>
       </form>
     </div>
   );
