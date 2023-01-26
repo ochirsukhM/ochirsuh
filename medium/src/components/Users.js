@@ -4,18 +4,23 @@ import { useState, useEffect } from "react";
 
 export default function Users() {
 
-  const [data, setData] = useState([]);
-
-  
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
+    getData();
+  }, []);
+  
+
+  const getData = () => {
     fetch("https://medium-api-psi.vercel.app/api/users")
-      .then((response) => response.json())
-      .then((dt) => {
-        console.log(dt.result);
-        setData(dt.result);
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("saved");
+        console.log(data);
+        setUsers(data.result);
       })
-  }, [])
+      .catch((err) => console.log(err));
+  };
 
   function onDelete(id) {
       
@@ -24,14 +29,10 @@ export default function Users() {
         method: "DELETE",
         headers:{ "Content-Type" : "application.json"},
       }).then((res) => res.json())
-      .then((dt)=>
+      .then((data)=>
       {
-        console.log(dt)
-        setData(
-          data.filter((data)=> {
-            return data.id !== id
-          })
-        )
+        console.log(data);
+      getData()
       }
 )
       .catch((err)=>{console.log(err);})
@@ -47,7 +48,7 @@ export default function Users() {
       </h2>
       <div>
         <h1>List of Users</h1>
-        {data.map((e,i)=>{
+        {users.map((e,i)=>{
           return <div key={i} className="row">
           <div className="col-md-9 d-flex justify-content-between">
           

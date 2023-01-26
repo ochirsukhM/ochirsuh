@@ -1,14 +1,14 @@
 ###
-get http://localhost:3000/api/users
+get https://medium-api-psi.vercel.app/api/users
 
 
 ###
-get http://localhost:3000/api/users?id=63cde513f76277111603ecad
+get https://medium-api-psi.vercel.app/api/users?id=63cde513f76277111603ecad
 
 
 
 ###
-post http://localhost:3000/api/users
+post https://medium-api-psi.vercel.app/api/users
 content-type: application/json
 
 {

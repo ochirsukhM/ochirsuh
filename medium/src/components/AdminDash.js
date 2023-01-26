@@ -1,9 +1,14 @@
 import { useEffect,useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function AdminDash(){
     const [data, setData] = useState([]);
-
+    const navigate = useNavigate();
 useEffect(() => {
+    if (!localStorage.getItem("name")) {
+        navigate("/login");
+      }
+
     fetch("https://medium-api-psi.vercel.app/api/news")
         .then((response) => response.json())
         .then((dt) => {
